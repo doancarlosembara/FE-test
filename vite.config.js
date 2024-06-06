@@ -25,6 +25,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: ['/public/build/assets/logoCVMebel.jpg']
+    },
+    rollupOptions: {
+      external: ['/public/build/assets/logoCVMebel-nobg.png']
     }
   }
 });
