@@ -1,8 +1,23 @@
 {
     "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/login"
-        }
+      { "source": "/login", "destination": "/login.php" },
+      { "source": "/dashboard", "destination": "/dashboard.php" },
+      { "source": "/register", "destination": "/register.php" },
+      { "source": "/profile", "destination": "/profile.php" },
+      { "source": "/employees", "destination": "/employees.php" },
+      { "source": "/branches", "destination": "/branches.php" },
+      { "source": "/departments", "destination": "/departments.php" },
+      { "source": "/positions", "destination": "/positions.php" },
+      { "source": "/shifts", "destination": "/shifts.php" },
+      { "source": "/metrics", "destination": "/metrics.php" },
+      { "source": "/requests", "destination": "/requests.php" },
+      { "source": "/payrolls", "destination": "/payrolls.php" },
+      { "source": "/attendance", "destination": "/attendance.php" },
+      { "source": "/globals", "destination": "/globals.php" },
+      { "source": "/logs", "destination": "/logs.php" },
+      { "source": "/calendar", "destination": "/calendar.php" },
+      { "source": "/my-profile", "destination": "/my-profile.php" },
+      { "source": "/my-attendance", "destination": "/my-attendance.php" }
     ]
-}
+  }
+  
