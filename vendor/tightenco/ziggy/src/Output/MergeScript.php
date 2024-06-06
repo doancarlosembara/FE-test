@@ -1,9 +1,9 @@
 <?php
 
-namespace Tighten\Ziggy\Output;
+namespace Tightenco\Ziggy\Output;
 
 use Stringable;
-use Tighten\Ziggy\Ziggy;
+use Tightenco\Ziggy\Ziggy;
 
 class MergeScript implements Stringable
 {
@@ -21,7 +21,13 @@ class MergeScript implements Stringable
         $routes = json_encode($this->ziggy->toArray()['routes']);
 
         return <<<HTML
-<script type="text/javascript"{$this->nonce}>Object.assign(Ziggy.routes,{$routes});</script>
+<script type="text/javascript"{$this->nonce}>
+    (function () {
+        const routes = {$routes};
+
+        Object.assign(Ziggy.routes, routes);
+    })();
+</script>
 HTML;
     }
 }

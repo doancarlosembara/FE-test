@@ -1,9 +1,9 @@
 <?php
 
-namespace Tighten\Ziggy\Output;
+namespace Tightenco\Ziggy\Output;
 
 use Stringable;
-use Tighten\Ziggy\Ziggy;
+use Tightenco\Ziggy\Ziggy;
 
 class Script implements Stringable
 {
@@ -21,7 +21,11 @@ class Script implements Stringable
     public function __toString(): string
     {
         return <<<HTML
-<script type="text/javascript"{$this->nonce}>const Ziggy={$this->ziggy->toJson()};{$this->function}</script>
+<script type="text/javascript"{$this->nonce}>
+    const Ziggy = {$this->ziggy->toJson()};
+
+    {$this->function}
+</script>
 HTML;
     }
 }

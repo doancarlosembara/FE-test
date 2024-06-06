@@ -1,29 +1,31 @@
 <?php
 
-namespace Tighten\Ziggy;
+namespace Tightenco\Ziggy;
 
-use Tighten\Ziggy\Output\MergeScript;
-use Tighten\Ziggy\Output\Script;
+use Tightenco\Ziggy\Output\MergeScript;
+use Tightenco\Ziggy\Output\Script;
 
 class BladeRouteGenerator
 {
     public static $generated;
 
-    public function generate($group = null, string $nonce = null): string
+    public function generate($group = null, $nonce = null)
     {
         $ziggy = new Ziggy($group);
 
-        $nonce = $nonce ? " nonce=\"{$nonce}\"" : '';
+        $nonce = $nonce ? ' nonce="' . $nonce . '"' : '';
 
         if (static::$generated) {
             return (string) $this->generateMergeJavascript($ziggy, $nonce);
         }
 
+        $function = $this->getRouteFunction();
+
         static::$generated = true;
 
         $output = config('ziggy.output.script', Script::class);
 
-        return (string) new $output($ziggy, $this->getRouteFunction(), $nonce);
+        return (string) new $output($ziggy, $function, $nonce);
     }
 
     private function generateMergeJavascript(Ziggy $ziggy, $nonce)
@@ -35,6 +37,6 @@ class BladeRouteGenerator
 
     private function getRouteFunction()
     {
-        return config('ziggy.skip-route-function') ? '' : file_get_contents(__DIR__ . '/../dist/route.umd.js');
+        return config('ziggy.skip-route-function') ? '' : file_get_contents(__DIR__ . '/../dist/index.js');
     }
 }
