@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
+import path from 'path';
 
 export default defineConfig({
   plugins: [
@@ -19,15 +20,15 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      ziggy: `${__dirname}/vendor/tightenco/ziggy/dist/index.esm.js`,
+      ziggy: path.resolve(__dirname, 'vendor/tightenco/ziggy/dist/index.esm.js'),
     },
   },
   build: {
     rollupOptions: {
-      external: ['/public/build/assets/logoCVMebel.jpg']
+      external: [
+        '/public/build/assets/logoCVMebel.jpg',
+        '/public/build/assets/logoCVMebel-nobg.png'
+      ],
     },
-    rollupOptions: {
-      external: ['/public/build/assets/logoCVMebel-nobg.png']
-    }
-  }
+  },
 });
